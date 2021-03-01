@@ -1,7 +1,7 @@
 # 2-uzduotis
 
 Programa, skaičiuojanti studentų namų darbų vidurkius arba medianas. 
-Norint paleisti programą, reikia atsisiųsti cpp failą, galima atsisiųsti ir kelis txt failus, ir kompiliuoti ir paleisti programą.
+Norint paleisti programą, reikia atsisiųsti cpp failą, kompiliuoti ir paleisti programą.
 
 [v0.3](https://github.com/MatasValiunas/2-uzduotis/tree/v0.3) -
 
