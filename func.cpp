@@ -44,7 +44,7 @@ void IvedimasRanka(vector<Stud>& A){
     } while (IvestisYN("prideti dar 1 studenta"));
 }
 
-void IvedimasIsFailo(vector<Stud>& A){
+bool IvedimasIsFailo(vector<Stud>& A){
     int failas;
     cout << "Failas is kurio bus atliktas skaitymas [1-3]: ";
     while (!(cin >> failas) || failas < 1 || failas > 3){
@@ -62,13 +62,13 @@ void IvedimasIsFailo(vector<Stud>& A){
 
     try {
         ifstream in(failoPav);
+        in.exceptions(ifstream::failbit | ifstream::badbit);
         int nd = -3;
         string tekst;
         while (tekst != "Egz."){
             in >> tekst;
             nd++;
         }
-
         int sk;
         while (!in.eof()){
             A.resize(A.size()+1);
@@ -83,7 +83,9 @@ void IvedimasIsFailo(vector<Stud>& A){
     }
     catch (exception ex){
         cout << "Ivyko klaida su failo skaitymu arba failas neegzistuoja!" << endl;
+        return false;
     }
+    return true;
 }
 
 double Vidurkis(vector<int>& paz){

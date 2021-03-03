@@ -19,7 +19,7 @@ struct Stud{
 };
 
 void IvedimasRanka(vector<Stud>& A);
-void IvedimasIsFailo(vector<Stud>& A);
+bool IvedimasIsFailo(vector<Stud>& A);
 double Vidurkis(int n, vector<int>& paz);
 double Mediana(int n, vector<int>& paz);
 void Isvedimas(vector<Stud> A);
