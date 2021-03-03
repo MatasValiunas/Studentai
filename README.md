@@ -14,5 +14,6 @@
   * Įrašyti studento vardą ir pavardę
   * Jei balai negeneruojami atsitiktinai, tai juos įrašyti
   * Pasirinkti ar pridėti naują studentą (jei taip, tai viskas kartojasi nuo 2 žingsnio)
+  * Pasirinkti ar skaičiuoti vidurkį ar medianą
 
 [v0.1](https://github.com/MatasValiunas/2-uzduotis) - galima skaičiuoti vidurkius ir medianas tiek su masyvais (mas.cpp), tiek su vektoriais (vekt.cpp). Yra atsitiktinių skaičių generavimas.
