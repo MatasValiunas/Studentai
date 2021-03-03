@@ -1,6 +1,6 @@
 # 2-uzduotis
 
-**Programa, skaičiuojanti studentų namų darbų vidurkius arba medianas. **
+**Programa, skaičiuojanti studentų namų darbų vidurkius arba medianas.**
 
 **Norint paleisti programą, reikia:** 
   * atsisiųsti **vekt.cpp** failą
