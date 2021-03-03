@@ -10,10 +10,12 @@
   * **terminal**'e parašyti "**./ats**"
   
 **Programos veikimas:**
+  * Pasirinkti ar skaityti duomenis iš failo (jei taip, tai nurodyti failą ir keliauti į paskutinį žingsnį)
   * Pasirinkti ar balus generuoti atsitiktinai
   * Įrašyti studento vardą ir pavardę
   * Jei balai negeneruojami atsitiktinai, tai juos įrašyti
   * Pasirinkti ar pridėti naują studentą (jei taip, tai viskas kartojasi nuo 2 žingsnio)
+  * Pasirinkti ar skaičiuoti vidurkį ar medianą
 
 [v0.2](https://github.com/MatasValiunas/2-uzduotis/tree/v0.2) - galima rinktis ar duomenis vesti ranka, ar skaityti iš failo. Skaitant iš failo, programa automatiškai apskaičiuoja kiek yra namų darbų. Taip pat yra išvedimas į failą. Yra vardų rūšiavimas.
 
