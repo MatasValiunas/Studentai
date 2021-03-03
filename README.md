@@ -9,7 +9,7 @@
   · **terminal**'e parašyti atitinkamą komandą: **c++ -o ats vekt.cpp** arba **c++ -o ats mas.cpp**
   · **terminal**'e parašyti **./ats**
   
-**Programos veikimas:**
+**Programos veikimas:**s
   · Pasirinkti ar balus generuoti atsitiktinai
   · Įrašyti studento vardą ir pavardę
   · Jei balai negeneruojami atsitiktinai, tai juos įrašyti
