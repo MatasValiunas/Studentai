@@ -1,6 +1,6 @@
 # 2-uzduotis
 
-**Programa, skaičiuojanti studentų namų darbų vidurkius arba medianas. **
+**Programa, skaičiuojanti studentų namų darbų vidurkius arba medianas.**
 
 **Norint paleisti programą, reikia:** 
   * atsisiųsti **mas.cpp** ir/arba **vekt.cpp** failus (atitinkamai ar norima dirbti su **masyvais** ar su **vektoriais**) 
