@@ -5,4 +5,4 @@ funkcijos:
 	c++ -c func.cpp
 
 clean:
-	del *.o *.exe
+	del *.o *.exe Rezultatai.txt

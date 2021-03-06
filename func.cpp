@@ -44,24 +44,19 @@ void IvedimasRanka(vector<Stud>& A){
     } while (IvestisYN("prideti dar 1 studenta"));
 }
 
-bool IvedimasIsFailo(vector<Stud>& A){
+bool IvedimasIsFailo(vector<Stud>& A, double Laik[]){
+    auto start = high_resolution_clock::now();
+
     int failas;
-    cout << "Failas is kurio bus atliktas skaitymas [1-3]: ";
-    while (!(cin >> failas) || failas < 1 || failas > 3){
-        cout << "Neteisinga ivestis!" << endl << "Failas is kurio bus atliktas skaitymas [1-3]: ";
+    cout << "Failo skaicius, is kurio bus atliktas skaitymas [Studentai ... .txt]: ";
+    while (!(cin >> failas) || failas < 1){
+        cout << "Neteisinga ivestis!" << endl;
         cin.clear();
 		cin.ignore(128, '\n');
     }
-    string failoPav;
-    if (failas == 1)
-        failoPav = "Studentai10000.txt";  
-    else if (failas == 2)
-        failoPav = "Studentai100000.txt"; 
-    else
-        failoPav = "Studentai1000000.txt";
 
     try {
-        ifstream in(failoPav);
+        ifstream in("Studentai" + to_string(failas) + ".txt");
         in.exceptions(ifstream::failbit | ifstream::badbit);
         int nd = -3;
         string tekst;
@@ -85,6 +80,11 @@ bool IvedimasIsFailo(vector<Stud>& A){
         cout << "Ivyko klaida su failo skaitymu arba failas neegzistuoja!" << endl;
         return false;
     }
+
+    auto end  = high_resolution_clock::now();
+    duration<double> diff = end - start;
+    Laik[1] = diff.count();
+
     return true;
 }
 
@@ -104,7 +104,9 @@ double Mediana(vector<int>& paz){
         return ((double)paz[n/2 - 1] + paz[n/2]) / 2;
 }
 
-void Isvedimas(vector<Stud> A){
+void Isvedimas(vector<Stud> A, double Laik[]){
+    auto start = high_resolution_clock::now();
+
     ofstream out("Rezultatai.txt");
     char VidMed;
     cout << "Rodyti vidurki ar mediana? [V/M]: ";
@@ -115,19 +117,41 @@ void Isvedimas(vector<Stud> A){
         cout << "Neteisinga ivestis!" << endl << "Rodyti vidurki ar mediana? [V/M]: ";
         cin >> VidMed;
     }
+    ofstream outK("RezultataiKieti.txt");
+    ofstream outM("RezultataiMinksti.txt");
     if (toupper(VidMed) == 'V'){
-        out << "Pavarde        Vardas         Galutinis (Vid.)" << endl;
-        out << "----------------------------------------------" << endl;
-        for (int i=0; i<A.size(); i++)
-            out <<fixed<<left<<setw(15)<< A[i].vard <<setw(15)<< A[i].pav <<setprecision(0)<< round(0.4 * Vidurkis(A[i].nd) + 0.6 * A[i].egz) << endl;
+        outK << "Pavarde                  Vardas             Galutinis (Vid.)" << endl;
+        outK << "------------------------------------------------------------" << endl;
+        outM << "Pavarde                  Vardas             Galutinis (Vid.)" << endl;
+        outM << "------------------------------------------------------------" << endl;
+        for (int i=0; i<A.size(); i++){
+            if (round(0.4 * Vidurkis(A[i].nd) + 0.6 * A[i].egz) >= 5)
+                outK <<fixed<<left<<setw(25)<< A[i].vard <<setw(25)<< A[i].pav <<setprecision(0)<< round(0.4 * Vidurkis(A[i].nd) + 0.6 * A[i].egz) << endl;
+            else
+                outM <<fixed<<left<<setw(25)<< A[i].vard <<setw(25)<< A[i].pav <<setprecision(0)<< round(0.4 * Vidurkis(A[i].nd) + 0.6 * A[i].egz) << endl;
+        }
     }
     else {
-        out << "Pavarde        Vardas         Galutinis (Med.)" << endl;
-        out << "----------------------------------------------" << endl;
-        for (int i=0; i<A.size(); i++)
-            out <<fixed<<left<<setw(15)<< A[i].vard <<setw(15)<< A[i].pav <<setprecision(0)<< round(0.4 * Mediana(A[i].nd) + 0.6 * A[i].egz) << endl;
+        outK << "Pavarde                  Vardas             Galutinis (Med.)" << endl;
+        outK << "------------------------------------------------------------" << endl;
+        outM << "Pavarde                  Vardas             Galutinis (Med.)" << endl;
+        outM << "------------------------------------------------------------" << endl;
+        for (int i=0; i<A.size(); i++){
+            if (round(0.4 * Mediana(A[i].nd) + 0.6 * A[i].egz) >= 5)
+                outK <<fixed<<left<<setw(25)<< A[i].vard <<setw(25)<< A[i].pav <<setprecision(0)<< round(0.4 * Mediana(A[i].nd) + 0.6 * A[i].egz) << endl;
+            else
+                outM <<fixed<<left<<setw(25)<< A[i].vard <<setw(25)<< A[i].pav <<setprecision(0)<< round(0.4 * Mediana(A[i].nd) + 0.6 * A[i].egz) << endl;
+        }
     }
     out.close();
+
+    auto end = high_resolution_clock::now();
+    duration<double> diff = end - start;
+    Laik[2] = diff.count();
+
+    cout << endl << "Duomenu kurimo laikas: " << Laik[0] << " s" << endl;
+    cout << "Duomenu skaitymo laikas: " << Laik[1] << " s" << endl;
+    cout << "Studentu rusiavimo ir isvedimo laikas: " << Laik[2] << " s" << endl;
 }
 
 bool IvestisYN(string tekstas){
@@ -158,4 +182,37 @@ int IvestisSk(string tekstas, bool check0to10){
 void RandomPridejimas(vector<int>& nd){
     nd.push_back(dist(mt));
     cout << "Pridetas " << nd.back() << endl;
+}
+
+void Generavimas(double Laik[]){
+    int stud, nd;
+    cout << "Studentu skaicius: ";
+    cin >> stud;
+    cout << "Namu darbu skaicius: ";
+    cin >> nd;
+
+    auto start = high_resolution_clock::now();
+
+    ofstream out("Studentai" + to_string(stud) + ".txt");
+    out <<fixed<<setw(25)<<left<< "Vardas" <<setw(25)<< "Pavarde";
+    for (int i=1; i<=nd; i++)
+        out <<fixed<<setw(10)<<left<< "ND" + to_string(i);
+    out << "Egz." << endl;
+
+    for (int i=1; i<=stud; i++){
+        out <<fixed<<setw(25)<<left<< "Vardas" + to_string(i) <<setw(25)<< "Pavarde" + to_string(i);
+        for (int i=0; i<nd; i++)
+            out <<fixed<<setw(10)<<left<< dist(mt);
+        out << dist(mt);
+        if (i != stud)
+            out << endl;
+    }
+    out.close();
+
+    auto end = high_resolution_clock::now();
+    duration<double> diff = end - start;
+    Laik[0] = diff.count();
+
+    if (!IvestisYN("toliau testi programa"))
+        exit(1);
 }
