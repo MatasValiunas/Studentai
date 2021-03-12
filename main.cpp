@@ -2,7 +2,7 @@
 
 int main(){
     vector<Stud> A;
-    double Laik[3]{};
+    double Laik[4]{};
 
     if (IvestisYN("generuotis duomenu faila"))
         Generavimas(Laik);
