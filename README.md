@@ -18,6 +18,25 @@
   * Pasirinkti ar pridėti naują studentą (jei taip, tai viskas kartojasi nuo 2 žingsnio)
   * Pasirinkti ar skaičiuoti vidurkį ar medianą
 
+### Duomenų generavimo laikai
+| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
+| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
+| Laikas (s)  | 0.0165 | 0.0505 | 0.48   | 4.8615    | 42.248    |
+### Duomenų skaitymo laikai
+| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
+| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
+| Laikas (s)  | 0.003 | 0.023 | 0.2235   | 2.207    | 12.2178    |
+### Studentų rūšiavimo laikai
+| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
+| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
+| Laikas (s)  | 0.0005 | 0.005 | 0.0455   | 0.519   | 2.48    |
+### Studentų išvedimo laikai
+| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
+| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
+| Laikas (s)  | 0.02 | 0.0496 | 0.4155   | 3.766    |37.2447   |
+
+---
+
 [v0.4](https://github.com/MatasValiunas/2-uzduotis/tree/v0.4) - pridėta galimybė generuoti duomenų failus, studentai pagal savo galutinį balą skirstomi į 2 grupes, matuojamas tam tikrų operacijų atlikimo laikas.
 
 [v0.3](https://github.com/MatasValiunas/2-uzduotis/tree/v0.3) - sukurti header, Makefile ir kiti cpp failai dėl paprastesnio naudojimo. Pridėtas failo skaitymo tikrinimas (try, catch).
