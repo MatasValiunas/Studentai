@@ -18,24 +18,30 @@
   * Pasirinkti ar pridėti naują studentą (jei taip, tai viskas kartojasi nuo 2 žingsnio)
   * Pasirinkti ar skaičiuoti vidurkį ar medianą
 
-### Duomenų generavimo laikai
-| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
-| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
-| Laikas (s)  | 0.0165 | 0.0505 | 0.48   | 4.8615    | 42.248    |
-### Duomenų skaitymo laikai
-| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
-| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
-| Laikas (s)  | 0.003 | 0.023 | 0.2235   | 2.207    | 12.2178    |
-### Studentų rūšiavimo laikai
-| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
-| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
-| Laikas (s)  | 0.0005 | 0.005 | 0.0455   | 0.519   | 2.48    |
-### Studentų išvedimo laikai
-| Studentų sk.       | 1000    | 10,000  | 100,000   | 1,000,000  | 10,000,000 |
-| :----------    | :------ | :------ | :-------- | :--------- | :--------- |
-| Laikas (s)  | 0.02 | 0.0496 | 0.4155   | 3.766    |37.2447   |
+Setup:
+* CPU - AMD Ryzen 5 2600
+* RAM - 16 GB
+* SSD
+
+### Duomenų nuskaitymo iš failo laikai
+| Konteineris   | 1.000  | 10.000  |100.000 | 1.000.000 | 10.000.000 |
+| :---------- | :------ | :------ | :------ | :-------- | :--------- |
+| vector  | 0.0035 | 0.0235  | 0.2275 | 2.2210   | 21.9675   |
+| list   | 0.0030 | 0.0240  | 0.2315 | 2.2835  | 22.9054   |
+| deque | 0.0030 | 0.0245  | 0.2260 | 2.2360   | 22.0014   |
 
 ---
+
+### Studentų rūšiąvimo į dvi grupes laikai
+| Konteineris   | 1.000  | 10.000  |100.000 | 1.000.000 | 10.000.000 |
+| :---------- | :------ | :------ | :------ | :-------- | :--------- |
+| vector  | 0.0005 | 0.0080  | 0.0765 | 0.7650   | 7.8420   |
+| list   | 0.0010 | 0.0075  | 0.0790 | 0.7640   | 7.7951   |
+| deque | 0.0010 | 0.0075  | 0.0675 | 0.6425   | 6.5412   |
+
+---
+
+[v0.5](https://github.com/MatasValiunas/2-uzduotis/tree/v0.5) - pridėta galimybė talpinti duomenis ne tik vektoriuose, bet ir list'uose ir deque'uose.
 
 [v0.4](https://github.com/MatasValiunas/2-uzduotis/tree/v0.4) - pridėta galimybė generuoti duomenų failus, studentai pagal savo galutinį balą skirstomi į 2 grupes, matuojamas tam tikrų operacijų atlikimo laikas.
 
