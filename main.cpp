@@ -1,18 +1,17 @@
 #include "header.hpp"
 
 int main(){
-    vector<Stud> A;
     double Laik[4]{};
 
-    if (IvestisYN("generuotis duomenu faila"))
-        Generavimas(Laik);
-        
-    if (IvestisYN("skaityti duomenis is tekstinio failo")){
-        if (IvedimasIsFailo(A, Laik))
-            Isvedimas(A, Laik);
+    char tip;
+    cout << "Su kuo vykdyti programa? [V/L/D]:" << endl;
+    cout << "Vektorius [V] / Listas [L] / Vektorius [D]: ";
+    cin >> tip;
+
+    while (toupper(tip) != 'V' && toupper(tip) != 'L' && toupper(tip) != 'D'){
+        cout << "Neteisinga ivestis! [V/L/D]: ";
+        cin >> tip;
     }
-    else {
-        IvedimasRanka(A);
-        Isvedimas(A, Laik);
-    }
+
+    fromMain(Laik, toupper(tip));
 }

@@ -4,48 +4,84 @@ random_device rd;
 mt19937 mt(rd());
 uniform_int_distribution<int> dist(0, 10);
 
-void IvedimasRanka(vector<Stud>& A){
+void fromMain(double Laik[], char tip){
+    if (tip == 'V'){
+        vector<Stud> A;
+        vector<Stud> Minkst;
+        vector<Stud> Kiet;
+        Startas(A, Minkst, Kiet, Laik);
+    }
+    else if (tip == 'L'){
+        list<Stud> A;
+        list<Stud> Minkst;
+        list<Stud> Kiet;
+        Startas(A, Minkst, Kiet, Laik);
+    }
+    else {
+        deque<Stud> A;
+        deque<Stud> Minkst;
+        deque<Stud> Kiet;
+        Startas(A, Minkst, Kiet, Laik);
+    }
+}
+
+template <typename T>
+void Startas(T& A, T& Minkst, T& Kiet, double Laik[]){
+    if (IvestisYN("generuotis duomenu faila"))
+        Generavimas(Laik);
+        
+    if (IvestisYN("skaityti duomenis is tekstinio failo")){
+        if (IvedimasIsFailo(A, Laik))
+            Isvedimas(A, Minkst, Kiet, Laik);
+    }
+    else {
+        IvedimasRanka(A);
+        Isvedimas(A, Minkst, Kiet, Laik);
+    }
+}
+
+template <typename T>
+void IvedimasRanka(T& A){
     bool atsit = IvestisYN("generuoti balus atsitiktinai");
     int nd = 0;
     if (IvestisYN("zinomas namu darbu skaicius"))
         nd = (IvestisSk("Namu darbu skaicius: ", false));
     
     do {
-        A.resize(A.size()+1);
+        Stud laikinas;
         cout << A.size() << " studento pavarde: ";
-        cin >> A[A.size()-1].pav;
+        cin >> A.back().pav;
         cout << A.size() << " studento vardas: ";
-        cin >> A[A.size()-1].vard;
+        cin >> A.back().vard;
         if (!atsit){
-            if (A[0].nd.size() == 0 && nd == 0){
+            if (A.front().nd.size() == 0 && nd == 0){
                 do {
-                    A[A.size()-1].nd.push_back(IvestisSk("Namu darbo ivertinimas"));
+                    A.back().nd.push_back(IvestisSk("Namu darbo ivertinimas"));
                 } while (IvestisYN("prideti dar 1 namu darba"));
             }
             else {
-                for (int i=0; i<(nd? nd : A[0].nd.size()); i++)
-                    A[A.size()-1].nd.push_back(IvestisSk("Namu darbo ivertinimas"));
+                for (int i=0; i<(nd ? nd : A.front().nd.size()); i++)
+                    A.back().nd.push_back(IvestisSk("Namu darbo ivertinimas"));
             }        
-            A[A.size()-1].egz = IvestisSk("Egzamino ivertinimas");
+            A.back().egz = IvestisSk("Egzamino ivertinimas");
         }
         else {
-            if (A[0].nd.size() == 0 && nd == 0){
+            if (A.front().nd.size() == 0 && nd == 0){
                 do {
-                    A[A.size()-1].nd.push_back(dist(mt));
+                    A.back().nd.push_back(dist(mt));
                 } while (IvestisYN("prideti dar 1 namu darba"));
             }
             else {
-                for (int i=0; i<(nd? nd : A[0].nd.size()); i++)
-                    A[A.size()-1].nd.push_back(dist(mt));
+                for (int i=0; i<(nd? nd : A.front().nd.size()); i++)
+                    A.back().nd.push_back(dist(mt));
             }
-            A[A.size()-1].egz = dist(mt);
+            A.back().egz = dist(mt);
         }
-
     } while (IvestisYN("prideti dar 1 studenta"));
 }
 
-bool IvedimasIsFailo(vector<Stud>& A, double Laik[]){
-
+template <typename T>
+bool IvedimasIsFailo(T& A, double Laik[]){
     int failas;
     cout << "Failo skaicius, is kurio bus atliktas skaitymas [Studentai ... .txt]: ";
     while (!(cin >> failas) || failas < 1){
@@ -68,12 +104,12 @@ bool IvedimasIsFailo(vector<Stud>& A, double Laik[]){
         int sk;
         while (!in.eof()){
             A.resize(A.size()+1);
-            in >> A[A.size()-1].vard >> A[A.size()-1].pav;
+            in >> A.back().vard >> A.back().pav;
             for (int i=0; i<nd; i++){
                 in >> sk;
-                A[A.size()-1].nd.push_back(sk);
+                A.back().nd.push_back(sk);
             }
-            in >> A[A.size()-1].egz;
+            in >> A.back().egz;
         }
         in.close();
     }
@@ -96,20 +132,8 @@ double Vidurkis(vector<int>& paz){
     return (double)sum / paz.size();
 }
 
-double Mediana(vector<int>& paz){
-    int n = paz.size();
-    sort(paz.begin(), paz.end());
-    if (n % 2 != 0)
-        return paz[n/2];
-    else
-        return ((double)paz[n/2 - 1] + paz[n/2]) / 2;
-}
-
-void Isvedimas(vector<Stud>& A, double Laik[]){
-    sort(A.begin(), A.end());
-    vector<Stud> Kiet;
-    vector<Stud> Minkst;
-
+template <typename T>
+void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
     Rusiavimas(A, Kiet, Minkst, Laik);
 
     auto start = system_clock::now();                   // Isvedimas
@@ -122,10 +146,10 @@ void Isvedimas(vector<Stud>& A, double Laik[]){
     outK << "------------------------------------------------------------" << endl;
     outM << "------------------------------------------------------------" << endl;
 
-    for (int i=0; i<Kiet.size(); i++)
-        outK <<fixed<<left<<setw(25)<< Kiet[i].vard <<setw(25)<< Kiet[i].pav << Kiet[i].galut << endl;
-    for (int i=0; i<Minkst.size(); i++)
-        outM <<fixed<<left<<setw(25)<< Minkst[i].vard <<setw(25)<< Minkst[i].pav << Minkst[i].galut << endl;
+    for (auto elem : Kiet)
+        outK <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
+    for (auto elem : Minkst)
+        outM <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
     outK.close();
     outM.close();
 
@@ -200,15 +224,16 @@ void Generavimas(double Laik[]){
         exit(1);
 }
 
-void Rusiavimas(vector<Stud>& A, vector<Stud>& Kiet, vector<Stud>& Minkst, double Laik[]){
+template <typename T>
+void Rusiavimas(T& A, T& Kiet, T& Minkst, double Laik[]){
     auto start = system_clock::now();     
 
-    for (int i=0; i<A.size(); i++){
-        A[i].galut = round(0.4 * Vidurkis(A[i].nd) + 0.6 * A[i].egz);
-        if (A[i].galut < 5)
-            Minkst.push_back(A[i]);
+    for (auto elem : A){
+        elem.galut = round(0.4 * Vidurkis(elem.nd) + 0.6 * elem.egz);
+        if (elem.galut < 5)
+            Minkst.push_back(elem);
         else
-            Kiet.push_back(A[i]);
+            Kiet.push_back(elem);
     }
 
     auto end = system_clock::now();
