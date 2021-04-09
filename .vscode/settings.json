@@ -5,6 +5,8 @@
         "random": "cpp",
         "iostream": "cpp",
         "list": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "chrono": "cpp",
+        "cmath": "cpp"
     }
 }

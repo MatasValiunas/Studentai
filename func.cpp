@@ -110,6 +110,7 @@ bool IvedimasIsFailo(T& A, double Laik[]){
                 A.back().nd.push_back(sk);
             }
             in >> A.back().egz;
+            A.back().galut = round(0.4 * Vidurkis(A.back().nd) + 0.6 * A.back().egz);
         }
         in.close();
     }
@@ -134,7 +135,11 @@ double Vidurkis(vector<int>& paz){
 
 template <typename T>
 void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
-    Rusiavimas(A, Kiet, Minkst, Laik);
+    bool skirstymas2 = IvestisYN("skirstyti studentus i 2 atskirus konteinerius");
+    if (skirstymas2)
+        Rusiavimas(A, Kiet, Minkst, Laik);
+    else
+        Rusiavimas2(A, Minkst, Laik);
 
     auto start = system_clock::now();                   // Isvedimas
 
@@ -146,8 +151,14 @@ void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
     outK << "------------------------------------------------------------" << endl;
     outM << "------------------------------------------------------------" << endl;
 
-    for (auto elem : Kiet)
-        outK <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
+    if (skirstymas2){
+        for (auto elem : Kiet)
+            outK <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
+    }
+    else {
+        for (auto elem : A)
+            outK <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
+    }
     for (auto elem : Minkst)
         outM <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
     outK.close();
@@ -157,6 +168,7 @@ void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
     duration<double> diff = end - start;
     Laik[3] = diff.count();
 
+    cout << endl;
     if (Laik[0] != 0)
         cout << endl << "Duomenu generavimo ir irasymo i faila laikas: " << Laik[0] << " s" << endl;
     if (Laik[1] != 0)
@@ -229,12 +241,28 @@ void Rusiavimas(T& A, T& Kiet, T& Minkst, double Laik[]){
     auto start = system_clock::now();     
 
     for (auto elem : A){
-        elem.galut = round(0.4 * Vidurkis(elem.nd) + 0.6 * elem.egz);
+        //elem.galut = round(0.4 * Vidurkis(elem.nd) + 0.6 * elem.egz);
         if (elem.galut < 5)
             Minkst.push_back(elem);
         else
             Kiet.push_back(elem);
     }
+
+    auto end = system_clock::now();
+    duration<double> diff = end - start;
+    Laik[2] = diff.count();       
+}
+
+bool MaziauUz5(Stud A){
+    return (A.galut < 5);
+}
+
+template <typename T>
+void Rusiavimas2(T& A, T& Minkst, double Laik[]){
+    auto start = system_clock::now();     
+
+    copy_if(A.begin(), A.end(), back_inserter(Minkst), MaziauUz5);
+    remove_if(A.begin(), A.end(), MaziauUz5);
 
     auto end = system_clock::now();
     duration<double> diff = end - start;
