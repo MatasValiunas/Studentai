@@ -168,15 +168,25 @@ void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
     duration<double> diff = end - start;
     Laik[3] = diff.count();
 
+    double laikas = 0;
     cout << endl;
-    if (Laik[0] != 0)
+    if (Laik[0] != 0){
+        laikas += Laik[0];
         cout << endl << "Duomenu generavimo ir irasymo i faila laikas: " << Laik[0] << " s" << endl;
-    if (Laik[1] != 0)
+    }
+    if (Laik[1] != 0){
+        laikas += Laik[1];
         cout << "Duomenu skaitymo laikas: " << Laik[1] << " s" << endl;
-    if (Laik[2] != 0)
+    }
+    if (Laik[2] != 0){
+        laikas += Laik[2];
         cout << "Studentu rusiavimo laikas: " << Laik[2] << " s" << endl;
-    if (Laik[3] != 0)
+    }
+    if (Laik[3] != 0){
+        laikas += Laik[3];
         cout << "Isvedimo i failus laikas: " << Laik[3] << " s" << endl;
+    }
+    cout << "Bendras laikas: " << laikas << " s" <<  endl;
 }
 
 bool IvestisYN(string tekstas){
@@ -241,7 +251,6 @@ void Rusiavimas(T& A, T& Kiet, T& Minkst, double Laik[]){
     auto start = system_clock::now();     
 
     for (auto elem : A){
-        //elem.galut = round(0.4 * Vidurkis(elem.nd) + 0.6 * elem.egz);
         if (elem.galut < 5)
             Minkst.push_back(elem);
         else
