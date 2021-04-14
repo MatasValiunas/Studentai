@@ -262,7 +262,7 @@ void Rusiavimas2(T& A, T& Minkst, double Laik[]){
     auto start = system_clock::now();     
 
     copy_if(A.begin(), A.end(), back_inserter(Minkst), MaziauUz5);
-    remove_if(A.begin(), A.end(), MaziauUz5);
+    A.erase(remove_if(A.begin(), A.end(), MaziauUz5), A.end());
 
     auto end = system_clock::now();
     duration<double> diff = end - start;
