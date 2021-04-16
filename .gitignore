@@ -37,3 +37,4 @@
 *.out
 *.app
 *.txt
+.vscode/settings.json
