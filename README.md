@@ -55,15 +55,6 @@ Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę st
 
 ---
 
-### Studentų rūšiąvimo į dvi grupes laikai
-| Konteineris   | 1.000  | 10.000  |100.000 | 1.000.000 | 10.000.000 |
-| :---------- | :------ | :------ | :------ | :-------- | :--------- |
-| vector  | 0.0005 | 0.0080  | 0.0765 | 0.7650   | 7.8420   |
-| list   | 0.0010 | 0.0075  | 0.0790 | 0.7640   | 7.7951   |
-| deque | 0.0010 | 0.0075  | 0.0675 | 0.6425   | 6.5412   |
-
----
-
 [v1.0](https://github.com/MatasValiunas/2-uzduotis/tree/v1.0) - yra 2 būdai skirstyti studentus.
 
 [v0.5](https://github.com/MatasValiunas/2-uzduotis/tree/v0.5) - pridėta galimybė talpinti duomenis ne tik vektoriuose, bet ir list'uose ir deque'uose.
