@@ -16,12 +16,35 @@
   * Įrašyti studento vardą ir pavardę
   * Jei balai negeneruojami atsitiktinai, tai juos įrašyti
   * Pasirinkti ar pridėti naują studentą (jei taip, tai viskas kartojasi nuo 2 žingsnio)
-  * Pasirinkti ar skaičiuoti vidurkį ar medianą
+  * Pasirinkti studentų rūšiavimo būdą
 
 Setup:
 * CPU - AMD Ryzen 5 2600
 * RAM - 16 GB
 * SSD
+
+#### 1 Strategija
+
+Konteinerio skirstymo laikas (s) į du naujus to paties tipo konteinerius. 
+| Konteineriai             | 1.000 | 10.000 | 100.000 | 1.000.000 | 10.000.000 |
+| :---------------------------- | :------ | :------ | :-------- | :--------- | :--------- |
+| vector  | 0.0010 | 0.0074 | 0.0709   | 0.7125   | 7.2141    |
+| list  | 0.0004 | 0.0070 | 0.0714   | 0.6914    | 6.8984    |
+| deque | 0.0005 | 0.0059 | 0.0609   | 0.5859    | 5.9974    |
+
+---
+
+#### 2 Strategija
+
+Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę studentai, o į naują perkeliami atsilikę studentai.
+
+| Konteineriai  | 1.000  | 10.000  | 100.000 | 1.000.000 | 10.000.000 |
+| :---------------------------- | :------ | :------ | :-------- | :--------- | :--------- |
+| vector | 0.0009 | 0.0089 | 0.0920  | 0.8604   | 8.8511    |
+| list  | 0.0015 | 0.0094 | 0.0969   | 0.9609    | 9.4485    |
+| deque| 0.0010 | 0.0084 | 0.0890   | 0.9125    | 9.0158  |
+
+---
 
 ### Duomenų nuskaitymo iš failo laikai
 | Konteineris   | 1.000  | 10.000  |100.000 | 1.000.000 | 10.000.000 |
@@ -40,6 +63,8 @@ Setup:
 | deque | 0.0010 | 0.0075  | 0.0675 | 0.6425   | 6.5412   |
 
 ---
+
+[v1.0](https://github.com/MatasValiunas/2-uzduotis/tree/v1.0) - yra 2 būdai skirstyti studentus.
 
 [v0.5](https://github.com/MatasValiunas/2-uzduotis/tree/v0.5) - pridėta galimybė talpinti duomenis ne tik vektoriuose, bet ir list'uose ir deque'uose.
 
