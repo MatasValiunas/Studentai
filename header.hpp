@@ -12,22 +12,40 @@
 using namespace std;
 using namespace chrono;
 
-struct Stud{
-    string vard, pav;
-    vector<int> nd;
-    int egz;
-    int galut;
+class Stud{
+    private:
+        string vard, pav;
+        int galut;
 
-    bool operator<(Stud a){
-        return vard < a.vard;
-    }
+    public: 
+        void setVard(string _vard, string _pav){
+            vard = _vard;
+            pav = _pav;
+        }
+
+        void setGalut(int _galut){
+            galut = _galut;
+        }
+
+        string aVard(){
+            return vard;
+        }
+
+        string aPav(){
+            return pav;
+        }
+
+        int aGalut(){
+            return galut;
+        }
+
+        bool operator<(Stud a){
+            return vard < a.vard;
+        }
 };
 
 template <typename T>
 void Startas(T&, T&, T&, double []);
-
-template <typename T>
-void IvedimasRanka(T&);
 
 template <typename T>
 void Rusiavimas(T&, T&, T& , double []);

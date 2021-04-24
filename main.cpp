@@ -5,7 +5,7 @@ int main(){
 
     char tip;
     cout << "Su kuo vykdyti programa? [V/L/D]:" << endl;
-    cout << "Vektorius [V] / Listas [L] / Vektorius [D]: ";
+    cout << "Vektorius [V] / Listas [L] / Deque [D]: ";
     cin >> tip;
 
     while (toupper(tip) != 'V' && toupper(tip) != 'L' && toupper(tip) != 'D'){

@@ -29,55 +29,9 @@ template <typename T>
 void Startas(T& A, T& Minkst, T& Kiet, double Laik[]){
     if (IvestisYN("generuotis duomenu faila"))
         Generavimas(Laik);
-        
-    if (IvestisYN("skaityti duomenis is tekstinio failo")){
-        if (IvedimasIsFailo(A, Laik))
-            Isvedimas(A, Minkst, Kiet, Laik);
-    }
-    else {
-        IvedimasRanka(A);
-        Isvedimas(A, Minkst, Kiet, Laik);
-    }
-}
 
-template <typename T>
-void IvedimasRanka(T& A){
-    bool atsit = IvestisYN("generuoti balus atsitiktinai");
-    int nd = 0;
-    if (IvestisYN("zinomas namu darbu skaicius"))
-        nd = (IvestisSk("Namu darbu skaicius: ", false));
-    
-    do {
-        Stud laikinas;
-        cout << A.size() << " studento pavarde: ";
-        cin >> A.back().pav;
-        cout << A.size() << " studento vardas: ";
-        cin >> A.back().vard;
-        if (!atsit){
-            if (A.front().nd.size() == 0 && nd == 0){
-                do {
-                    A.back().nd.push_back(IvestisSk("Namu darbo ivertinimas"));
-                } while (IvestisYN("prideti dar 1 namu darba"));
-            }
-            else {
-                for (int i=0; i<(nd ? nd : A.front().nd.size()); i++)
-                    A.back().nd.push_back(IvestisSk("Namu darbo ivertinimas"));
-            }        
-            A.back().egz = IvestisSk("Egzamino ivertinimas");
-        }
-        else {
-            if (A.front().nd.size() == 0 && nd == 0){
-                do {
-                    A.back().nd.push_back(dist(mt));
-                } while (IvestisYN("prideti dar 1 namu darba"));
-            }
-            else {
-                for (int i=0; i<(nd? nd : A.front().nd.size()); i++)
-                    A.back().nd.push_back(dist(mt));
-            }
-            A.back().egz = dist(mt);
-        }
-    } while (IvestisYN("prideti dar 1 studenta"));
+    if (IvedimasIsFailo(A, Laik))
+        Isvedimas(A, Minkst, Kiet, Laik);
 }
 
 template <typename T>
@@ -101,16 +55,20 @@ bool IvedimasIsFailo(T& A, double Laik[]){
             in >> tekst;
             nd++;
         }
+
         int sk;
+        string vard, pav;
         while (!in.eof()){
+            vector<int> ndV;
             A.resize(A.size()+1);
-            in >> A.back().vard >> A.back().pav;
+            in >> vard >> pav;
+            A.back().setVard(vard, pav);
             for (int i=0; i<nd; i++){
                 in >> sk;
-                A.back().nd.push_back(sk);
+                ndV.push_back(sk);
             }
-            in >> A.back().egz;
-            A.back().galut = round(0.4 * Vidurkis(A.back().nd) + 0.6 * A.back().egz);
+            in >> sk;
+            A.back().setGalut(round(0.4 * Vidurkis(ndV) + 0.6 * sk));
         }
         in.close();
     }
@@ -135,8 +93,14 @@ double Vidurkis(vector<int>& paz){
 
 template <typename T>
 void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
-    bool skirstymas2 = IvestisYN("skirstyti studentus i 2 atskirus konteinerius");
-    if (skirstymas2)
+    int sk;
+    cout <<  "Ar skirstyti studentus i 2 naujus konteinerius [1], ar sukurti tik 1 nauja konteineri minkstiems studentams [2]?: ";
+    while (!(cin >> sk) || sk < 1 || sk > 2){
+        cout << "Neteisinga ivestis!" << endl << "Ar skirstyti studentus i 2 naujus konteinerius [1], ar sukurti tik 1 nauja konteineri minkstiems studentams [2]?: ";
+        cin.clear();
+		cin.ignore(128, '\n');
+    }
+    if (sk == 1)
         Rusiavimas(A, Kiet, Minkst, Laik);
     else
         Rusiavimas2(A, Minkst, Laik);
@@ -151,16 +115,16 @@ void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
     outK << "------------------------------------------------------------" << endl;
     outM << "------------------------------------------------------------" << endl;
 
-    if (skirstymas2){
+    if (sk == 1){
         for (auto elem : Kiet)
-            outK <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
+            outK <<fixed<<left<<setw(25)<< elem.aVard() <<setw(25)<< elem.aPav() << elem.aGalut() << endl;
     }
     else {
         for (auto elem : A)
-            outK <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
+            outK <<fixed<<left<<setw(25)<< elem.aVard() <<setw(25)<< elem.aPav() << elem.aGalut() << endl;
     }
     for (auto elem : Minkst)
-        outM <<fixed<<left<<setw(25)<< elem.vard <<setw(25)<< elem.pav << elem.galut << endl;
+        outM <<fixed<<left<<setw(25)<< elem.aVard() <<setw(25)<< elem.aPav() << elem.aGalut() << endl;
     outK.close();
     outM.close();
 
@@ -251,7 +215,7 @@ void Rusiavimas(T& A, T& Kiet, T& Minkst, double Laik[]){
     auto start = system_clock::now();     
 
     for (auto elem : A){
-        if (elem.galut < 5)
+        if (elem.aGalut() < 5)
             Minkst.push_back(elem);
         else
             Kiet.push_back(elem);
@@ -263,7 +227,7 @@ void Rusiavimas(T& A, T& Kiet, T& Minkst, double Laik[]){
 }
 
 bool MaziauUz5(Stud A){
-    return (A.galut < 5);
+    return (A.aGalut() < 5);
 }
 
 template <typename T>
