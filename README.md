@@ -23,26 +23,34 @@ Setup:
 * RAM - 16 GB
 * SSD
 
-#### 1 Strategija
+#### 1 Strategija (NAUJAS)
 
 Konteinerio skirstymo laikas (s) į du naujus to paties tipo konteinerius. 
 | Konteineriai             | 1.000 | 10.000 | 100.000 | 1.000.000 |
 | :---------------------------- | :------ | :------ | :-------- | :--------- | 
-| vector  | 0.0010 | 0.0074 | 0.0709   | 0.7125   |
-| list  | 0.0004 | 0.0070 | 0.0714   | 0.6914    |
-| deque | 0.0005 | 0.0059 | 0.0609   | 0.5859    | 
+| vector  | 0.0005 | 0.0019 | 0.0210   | 0.2069   |
+| list  | 0.0005 | 0.0024 | 0.0264   | 0.2560    |
+| deque | 0.0005 | 0.0014 | 0.0180   | 0.1649    | 
 
 ---
 
-#### 2 Strategija
+#### 2 Strategija (NAUJAS)
 
 Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę studentai, o į naują perkeliami atsilikę studentai.
+| Konteineriai             | 1.000 | 10.000 | 100.000 | 1.000.000 |
+| :---------------------------- | :------ | :------ | :-------- | :--------- | 
+| vector  | 0.0005 | 0.0024 | 0.0265   | 0.2280   |
+| list  | 0.0005 | 0.0024 | 0.0260   | 0.2315    |
+| deque | 0.0005 | 0.0024 | 0.0274   | 0.2525    | 
 
-| Konteineriai  | 1.000  | 10.000  | 100.000 | 1.000.000 | 
-| :---------------------------- | :------ | :------ | :-------- | :--------- |
-| vector | 0.0009 | 0.0089 | 0.0920  | 0.8604   | 
-| list  | 0.0015 | 0.0094 | 0.0969   | 0.9609    | 
-| deque| 0.0010 | 0.0084 | 0.0890   | 0.9125    | 
+---
+
+#### Klasių ir struktūrų palyginimas (1 Strategija, deque)
+
+| Konteineriai             |  10.000 | 100.000 | 1.000.000 |
+| :---------------------------- | :------ | :-------- | :--------- | 
+| Klasė   | 0.0014 | 0.0180   | 0.1649   |
+| Struktūra  | 0.0059 | 0.0609   | 0.5859    |
 
 ---
 
@@ -54,6 +62,8 @@ Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę st
 | deque | 0.0030 | 0.0245  | 0.2260 | 2.2360   | 
 
 ---
+
+[v1.1](https://github.com/MatasValiunas/2-uzduotis/tree/v1.1) - studentai nuo šiol laikomi ne struktūrose, o klasėse.
 
 [v1.0](https://github.com/MatasValiunas/2-uzduotis/tree/v1.0) - yra 2 būdai skirstyti studentus.
 
