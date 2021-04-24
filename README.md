@@ -1,4 +1,4 @@
-# 2-uzduotis
+# Studentai
 
 **Programa, skaičiuojanti studentų galutinį balą pagal jų namų darbų vidurkius arba medianas ir egzaminą; juos suskirsto į "kietus" ir "minkštus" pagal jų galutinį balą.**
 
