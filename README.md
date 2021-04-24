@@ -23,7 +23,7 @@ Setup:
 * RAM - 16 GB
 * SSD
 
-#### 1 Strategija (NAUJAS)
+#### 1 Strategija
 
 Konteinerio skirstymo laikas (s) į du naujus to paties tipo konteinerius. 
 | Konteineriai             | 1.000 | 10.000 | 100.000 | 1.000.000 |
@@ -34,7 +34,7 @@ Konteinerio skirstymo laikas (s) į du naujus to paties tipo konteinerius.
 
 ---
 
-#### 2 Strategija (NAUJAS)
+#### 2 Strategija 
 
 Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę studentai, o į naują perkeliami atsilikę studentai.
 | Konteineriai             | 1.000 | 10.000 | 100.000 | 1.000.000 |
