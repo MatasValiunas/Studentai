@@ -85,16 +85,16 @@ Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę st
 
 ---
 
-[v1.1](https://github.com/MatasValiunas/2-uzduotis/tree/v1.1) - studentai nuo šiol laikomi ne struktūrose, o klasėse.
+[v1.1](https://github.com/MatasValiunas/Studentai/tree/v1.1) - studentai nuo šiol laikomi ne struktūrose, o klasėse.
 
-[v1.0](https://github.com/MatasValiunas/2-uzduotis/tree/v1.0) - yra 2 būdai skirstyti studentus.
+[v1.0](https://github.com/MatasValiunas/Studentai/tree/v1.0) - yra 2 būdai skirstyti studentus.
 
-[v0.5](https://github.com/MatasValiunas/2-uzduotis/tree/v0.5) - pridėta galimybė talpinti duomenis ne tik vektoriuose, bet ir list'uose ir deque'uose.
+[v0.5](https://github.com/MatasValiunas/Studentai/tree/v0.5) - pridėta galimybė talpinti duomenis ne tik vektoriuose, bet ir list'uose ir deque'uose.
 
-[v0.4](https://github.com/MatasValiunas/2-uzduotis/tree/v0.4) - pridėta galimybė generuoti duomenų failus, studentai pagal savo galutinį balą skirstomi į 2 grupes, matuojamas tam tikrų operacijų atlikimo laikas.
+[v0.4](https://github.com/MatasValiunas/Studentai/tree/v0.4) - pridėta galimybė generuoti duomenų failus, studentai pagal savo galutinį balą skirstomi į 2 grupes, matuojamas tam tikrų operacijų atlikimo laikas.
 
-[v0.3](https://github.com/MatasValiunas/2-uzduotis/tree/v0.3) - sukurti header, Makefile ir kiti cpp failai dėl paprastesnio naudojimo. Pridėtas failo skaitymo tikrinimas (try, catch).
+[v0.3](https://github.com/MatasValiunas/Studentai/tree/v0.3) - sukurti header, Makefile ir kiti cpp failai dėl paprastesnio naudojimo. Pridėtas failo skaitymo tikrinimas (try, catch).
 
-[v0.2](https://github.com/MatasValiunas/2-uzduotis/tree/v0.2) - galima rinktis ar duomenis vesti ranka, ar skaityti iš failo. Skaitant iš failo, programa automatiškai apskaičiuoja kiek yra namų darbų. Taip pat yra išvedimas į failą. Yra vardų rūšiavimas.
+[v0.2](https://github.com/MatasValiunas/Studentai/tree/v0.2) - galima rinktis ar duomenis vesti ranka, ar skaityti iš failo. Skaitant iš failo, programa automatiškai apskaičiuoja kiek yra namų darbų. Taip pat yra išvedimas į failą. Yra vardų rūšiavimas.
 
-[v0.1](https://github.com/MatasValiunas/2-uzduotis) - galima skaičiuoti vidurkius ir medianas tiek su masyvais (mas.cpp), tiek su vektoriais (vekt.cpp). Yra atsitiktinių skaičių generavimas.
+[v0.1](https://github.com/MatasValiunas/Studentai/tree/v0.1) - galima skaičiuoti vidurkius ir medianas tiek su masyvais (mas.cpp), tiek su vektoriais (vekt.cpp). Yra atsitiktinių skaičių generavimas.
