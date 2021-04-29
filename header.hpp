@@ -16,6 +16,7 @@ class Stud{
     private:
         string vard, pav;
         int galut;
+        vector<int> nd;
 
     public: 
         void setVard(string _vard, string _pav){
@@ -27,21 +28,23 @@ class Stud{
             galut = _galut;
         }
 
-        string aVard(){
-            return vard;
-        }
+        string getVard() const { return vard; }
 
-        string aPav(){
-            return pav;
-        }
+        string getVard() { return vard; }
 
-        int aGalut(){
-            return galut;
-        }
+        string getPav() const { return pav; }
+
+        int getGalut() const { return galut; }
 
         bool operator<(Stud a){
             return vard < a.vard;
         }
+
+        bool operator>(Stud a){
+            return vard > a.vard;
+        }
+
+        ~Stud(){}
 };
 
 template <typename T>
