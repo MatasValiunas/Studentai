@@ -60,7 +60,7 @@ bool IvedimasIsFailo(T& A, double Laik[]){
         string vard, pav;
         while (!in.eof()){
             vector<int> ndV;
-            A.resize(A.size()+1);
+            A.push_back(Stud());
             in >> vard >> pav;
             A.back().setVard(vard, pav);
             for (int i=0; i<nd; i++){

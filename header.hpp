@@ -23,17 +23,27 @@ class Stud{
             pav = _pav;
         }
 
-        void setGalut(int _galut){
-            galut = _galut;
-        }
+        void setGalut(int _galut){ galut = _galut; }
 
         string getVard() const { return vard; }
-
-        string getVard() { return vard; }
-
         string getPav() const { return pav; }
-
         int getGalut() const { return galut; }
+
+
+        Stud(){}
+        Stud (string _vard, string _pav, int _galut) : vard(_vard), pav(_pav), galut(_galut){}
+        Stud (const Stud& a) : vard(a.getVard()), pav(a.getPav()), galut(a.getGalut()){}        // Kopijavimo konstruktorius
+
+        Stud& operator=(const Stud& a){     // Priskyrimo operatorius
+            if(&a == this) 
+                return *this;
+            vard = a.getVard();
+            pav = a.getPav();
+            galut = a.getGalut();   
+            return *this;
+        }
+
+        ~Stud(){}       // Destruktorius
 
         bool operator<(Stud a){
             return vard < a.vard;
@@ -42,11 +52,6 @@ class Stud{
         bool operator>(Stud a){
             return vard > a.vard;
         }
-
-        //Stud(const Stud& v);                 // copy konstruktorius
-        //Stud& operator=(const Stud& v);      // copy konstruktorius
-
-        ~Stud(){}
 };
 
 template <typename T>
