@@ -117,14 +117,14 @@ void Isvedimas(T& A, T& Minkst, T& Kiet, double Laik[]){
 
     if (sk == 1){
         for (auto elem : Kiet)
-            outK <<fixed<<left<<setw(25)<< elem.aVard() <<setw(25)<< elem.aPav() << elem.aGalut() << endl;
+            outK <<fixed<<left<<setw(25)<< elem.getVard() <<setw(25)<< elem.getPav() << elem.getGalut() << endl;
     }
     else {
         for (auto elem : A)
-            outK <<fixed<<left<<setw(25)<< elem.aVard() <<setw(25)<< elem.aPav() << elem.aGalut() << endl;
+            outK <<fixed<<left<<setw(25)<< elem.getVard() <<setw(25)<< elem.getPav() << elem.getGalut() << endl;
     }
     for (auto elem : Minkst)
-        outM <<fixed<<left<<setw(25)<< elem.aVard() <<setw(25)<< elem.aPav() << elem.aGalut() << endl;
+        outM <<fixed<<left<<setw(25)<< elem.getVard() <<setw(25)<< elem.getPav() << elem.getGalut() << endl;
     outK.close();
     outM.close();
 
@@ -215,7 +215,7 @@ void Rusiavimas(T& A, T& Kiet, T& Minkst, double Laik[]){
     auto start = system_clock::now();     
 
     for (auto elem : A){
-        if (elem.aGalut() < 5)
+        if (elem.getGalut() < 5)
             Minkst.push_back(elem);
         else
             Kiet.push_back(elem);
@@ -227,7 +227,7 @@ void Rusiavimas(T& A, T& Kiet, T& Minkst, double Laik[]){
 }
 
 bool MaziauUz5(Stud A){
-    return (A.aGalut() < 5);
+    return (A.getGalut() < 5);
 }
 
 template <typename T>

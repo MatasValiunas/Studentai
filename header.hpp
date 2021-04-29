@@ -27,21 +27,26 @@ class Stud{
             galut = _galut;
         }
 
-        string aVard(){
-            return vard;
-        }
+        string getVard() const { return vard; }
 
-        string aPav(){
-            return pav;
-        }
+        string getVard() { return vard; }
 
-        int aGalut(){
-            return galut;
-        }
+        string getPav() const { return pav; }
+
+        int getGalut() const { return galut; }
 
         bool operator<(Stud a){
             return vard < a.vard;
         }
+
+        bool operator>(Stud a){
+            return vard > a.vard;
+        }
+
+        //Stud(const Stud& v);                 // copy konstruktorius
+        //Stud& operator=(const Stud& v);      // copy konstruktorius
+
+        ~Stud(){}
 };
 
 template <typename T>
