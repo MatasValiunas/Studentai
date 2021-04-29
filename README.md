@@ -85,8 +85,6 @@ Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę st
 
 ---
 
-[v1.2](https://github.com/MatasValiunas/Studentai/tree/v1.1) - realizuotas **Rule of 3**.
-
 [v1.1](https://github.com/MatasValiunas/Studentai/tree/v1.1) - studentai nuo šiol laikomi ne struktūrose, o klasėse.
 
 [v1.0](https://github.com/MatasValiunas/Studentai/tree/v1.0) - yra 2 būdai skirstyti studentus.
