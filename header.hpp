@@ -23,7 +23,11 @@ class Stud{
             pav = _pav;
         }
 
-        void setGalut(int _galut){ galut = _galut; }
+        void setGalut(int _galut){
+            if (_galut < 0 || _galut > 10)
+                throw runtime_error("Galutinis pazymys turi buti intervale [0,10]");
+            galut = _galut; 
+        }
 
         string getVard() const { return vard; }
         string getPav() const { return pav; }
