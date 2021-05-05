@@ -1,0 +1,153 @@
+{\bfseries{Programa, skaičiuojanti studentų galutinį balą pagal jų namų darbų vidurkius arba medianas ir egzaminą; juos suskirsto į \char`\"{}kietus\char`\"{} ir \char`\"{}minkštus\char`\"{} pagal jų galutinį balą.}}
+
+{\bfseries{Norint paleisti programą, reikia\+:}}
+\begin{DoxyItemize}
+\item atsisiųsti {\bfseries{main.\+cpp}}, {\bfseries{func.\+cpp}}, {\bfseries{\mbox{\hyperlink{header_8hpp_source}{header.\+hpp}}}} ir {\bfseries{Makefile}}
+\item paleisti programą, kompiliuojančią kodą (Visual Studio, Visual Studio Code ir t.\+t.)
+\item per {\bfseries{terminal}}\textquotesingle{}ą nukeliauti su {\bfseries{cd}} komanda į aplanką, kuriame yra atsiųstas failas
+\item {\bfseries{terminal}}\textquotesingle{}e parašyti \char`\"{}$\ast$$\ast$mingw32-\/make$\ast$$\ast$\char`\"{}
+\item {\bfseries{terminal}}\textquotesingle{}e parašyti \char`\"{}$\ast$$\ast$./ats$\ast$$\ast$\char`\"{}
+\end{DoxyItemize}
+
+{\bfseries{Programos veikimas\+:}}
+\begin{DoxyItemize}
+\item Pasirinkti ar norima, kad duomenų failai būtų sugeneruoti
+\item Pasirinkti ar skaityti duomenis iš failo (jei taip, tai nurodyti failą ir keliauti į paskutinį žingsnį)
+\item Pasirinkti ar balus generuoti atsitiktinai
+\item Įrašyti studento vardą ir pavardę
+\item Jei balai negeneruojami atsitiktinai, tai juos įrašyti
+\item Pasirinkti ar pridėti naują studentą (jei taip, tai viskas kartojasi nuo 2 žingsnio)
+\item Pasirinkti studentų rūšiavimo būdą
+\end{DoxyItemize}
+
+Setup\+:
+\begin{DoxyItemize}
+\item CPU -\/ AMD Ryzen 5 2600
+\item RAM -\/ 16 GB
+\item SSD
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysubsubsection{1 Strategija (\+O1)}\label{md__r_e_a_d_m_e_autotoc_md1}
+Konteinerio skirstymo laikas (s) į du naujus to paties tipo konteinerius. \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endhead
+vector   &0.\+0020   &0.\+0209   &0.\+2059    \\\cline{1-4}
+list   &0.\+0025   &0.\+0285   &0.\+2600    \\\cline{1-4}
+deque   &0.\+0014   &0.\+0174   &0.\+1630   \\\cline{1-4}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsubsection{1 Strategija (\+O2)}\label{md__r_e_a_d_m_e_autotoc_md3}
+Konteinerio skirstymo laikas (s) į du naujus to paties tipo konteinerius. \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endhead
+vector   &0.\+0019   &0.\+0210   &0.\+2069    \\\cline{1-4}
+list   &0.\+0024   &0.\+0264   &0.\+2560    \\\cline{1-4}
+deque   &0.\+0014   &0.\+0180   &0.\+1649   \\\cline{1-4}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsubsection{1 Strategija (\+O3)}\label{md__r_e_a_d_m_e_autotoc_md5}
+Konteinerio skirstymo laikas (s) į du naujus to paties tipo konteinerius. \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endhead
+vector   &0.\+0019   &0.\+0220   &0.\+2070    \\\cline{1-4}
+list   &0.\+0025   &0.\+0265   &0.\+2530    \\\cline{1-4}
+deque   &0.\+0014   &0.\+0184   &0.\+1590   \\\cline{1-4}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{2 Strategija (\+O2)}\label{md__r_e_a_d_m_e_autotoc_md7}
+Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę studentai, o į naują perkeliami atsilikę studentai. \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineriai   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endhead
+vector   &0.\+0024   &0.\+0265   &0.\+2280    \\\cline{1-4}
+list   &0.\+0024   &0.\+0260   &0.\+2315    \\\cline{1-4}
+deque   &0.\+0024   &0.\+0274   &0.\+2525   \\\cline{1-4}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{Klasių ir struktūrų palyginimas (1 Strategija, deque)}\label{md__r_e_a_d_m_e_autotoc_md9}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-4}
+\endhead
+Klasė   &0.\+0014   &0.\+0180   &0.\+1649    \\\cline{1-4}
+Struktūra   &0.\+0059   &0.\+0609   &0.\+5859   \\\cline{1-4}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{Duomenų nuskaitymo iš failo laikai}\label{md__r_e_a_d_m_e_autotoc_md11}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineris   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Konteineris   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 10.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 100.\+000   }&\cellcolor{\tableheadbgcolor}\textbf{ 1.\+000.\+000    }\\\cline{1-5}
+\endhead
+vector   &0.\+0035   &0.\+0235   &0.\+2275   &2.\+2210    \\\cline{1-5}
+list   &0.\+0030   &0.\+0240   &0.\+2315   &2.\+2835    \\\cline{1-5}
+deque   &0.\+0030   &0.\+0245   &0.\+2260   &2.\+2360   \\\cline{1-5}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v1.5}{\texttt{ v1.\+5}} -\/ studentų klasė išvesta iš naujos virtualios žmogaus klasės.
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v1.2}{\texttt{ v1.\+2}} -\/ realizuotas {\bfseries{Rule of 3}}.
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v1.1}{\texttt{ v1.\+1}} -\/ studentai nuo šiol laikomi ne struktūrose, o klasėse.
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v1.0}{\texttt{ v1.\+0}} -\/ yra 2 būdai skirstyti studentus.
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v0.5}{\texttt{ v0.\+5}} -\/ pridėta galimybė talpinti duomenis ne tik vektoriuose, bet ir list\textquotesingle{}uose ir deque\textquotesingle{}uose.
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v0.4}{\texttt{ v0.\+4}} -\/ pridėta galimybė generuoti duomenų failus, studentai pagal savo galutinį balą skirstomi į 2 grupes, matuojamas tam tikrų operacijų atlikimo laikas.
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v0.3}{\texttt{ v0.\+3}} -\/ sukurti header, Makefile ir kiti cpp failai dėl paprastesnio naudojimo. Pridėtas failo skaitymo tikrinimas (try, catch).
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v0.2}{\texttt{ v0.\+2}} -\/ galima rinktis ar duomenis vesti ranka, ar skaityti iš failo. Skaitant iš failo, programa automatiškai apskaičiuoja kiek yra namų darbų. Taip pat yra išvedimas į failą. Yra vardų rūšiavimas.
+
+\href{https://github.com/MatasValiunas/Studentai/tree/v0.1}{\texttt{ v0.\+1}} -\/ galima skaičiuoti vidurkius ir medianas tiek su masyvais (mas.\+cpp), tiek su vektoriais (vekt.\+cpp). Yra atsitiktinių skaičių generavimas. 

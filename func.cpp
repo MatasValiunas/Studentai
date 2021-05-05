@@ -27,7 +27,7 @@ void fromMain(double Laik[], char tip){
 
 template <typename T>
 void Startas(T& A, T& Minkst, T& Kiet, double Laik[]){
-    if (IvestisYN("generuotis duomenu faila"))
+    if (IvestisYN("generuoti duomenu faila"))
         Generavimas(Laik);
 
     if (IvedimasIsFailo(A, Laik))
