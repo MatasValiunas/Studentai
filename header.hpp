@@ -12,9 +12,28 @@
 using namespace std;
 using namespace chrono;
 
-class Stud{
-    private:
+class Zmogus{
+    protected:
         string vard, pav;
+        int galut;
+
+    public: 
+        virtual ~Zmogus() = 0;
+
+        string getVard() const { return vard; }
+        string getPav() const { return pav; }
+
+        void setVard(string _vard, string _pav){
+            vard = _vard;
+            pav = _pav;
+        }
+        void setGalut(int _galut){ galut = _galut; }
+};
+
+inline Zmogus::~Zmogus(){}
+
+class Stud : public Zmogus{
+    private:
         int galut;
 
     public: 
@@ -31,8 +50,15 @@ class Stud{
 
 
         Stud(){}
-        Stud (string _vard, string _pav, int _galut) : vard(_vard), pav(_pav), galut(_galut){}
-        Stud (const Stud& a) : vard(a.getVard()), pav(a.getPav()), galut(a.getGalut()){}        // Kopijavimo konstruktorius
+        Stud (string _vard, string _pav, int _galut) : galut(_galut){
+            vard = _vard;
+            pav = _pav; 
+        }
+
+        Stud (const Stud& a) : galut(a.getGalut()){        // Kopijavimo konstruktorius
+            vard = a.getVard();
+            pav = a.getPav();
+        }
 
         Stud& operator=(const Stud& a){     // Priskyrimo operatorius
             if(&a == this) 
