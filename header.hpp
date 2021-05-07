@@ -8,6 +8,7 @@
 #include <chrono>
 #include <deque>
 #include <list>
+#include <exception>
 
 using namespace std;
 using namespace chrono;
