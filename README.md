@@ -85,6 +85,8 @@ Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę st
 
 ---
 
+[v2.0](https://github.com/MatasValiunas/Studentai/tree/v2.0) - 
+
 [v1.5](https://github.com/MatasValiunas/Studentai/tree/v1.5) - studentų klasė išvesta iš naujos virtualios žmogaus klasės.
 
 [v1.2](https://github.com/MatasValiunas/Studentai/tree/v1.2) - realizuotas **Rule of 3**.
