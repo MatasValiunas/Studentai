@@ -85,7 +85,7 @@ Konteinerio skirstymo laikas (s), kai sename konteineryje paliekami pažengę st
 
 ---
 
-[v2.0](https://github.com/MatasValiunas/Studentai/tree/v2.0) - 
+[v2.0](https://github.com/MatasValiunas/Studentai/tree/v2.0) - pridėti .exe ir .msi failai, padarytas Unit testas.
 
 [v1.5](https://github.com/MatasValiunas/Studentai/tree/v1.5) - studentų klasė išvesta iš naujos virtualios žmogaus klasės.
 
